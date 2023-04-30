@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void calculate(int n, float *sum)
+{
+    float f = 1.0;
+    for(int i = 1; i <= n; i++)
+    {
+        f *= i;
+        *sum += f/i;
+    }
+    return;
+}
+
+int main()
+{
+    int n;
+    float sum = 0.0;
+    
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    
+    calculate(n, &sum);
+    
+    printf("The sum of the series is: %f", sum);
+    
+    return 0;
+}
