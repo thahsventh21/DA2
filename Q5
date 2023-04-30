@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    float chennai[7], delhi[7], haveri[7], gangtok[7];
+
+    
+    printf("Enter the temperature of Chennai for the week of 7 days:\n");
+    for (int i = 0; i < 7; i++) {
+        printf("Day %d: ", i+1);
+        scanf("%f", &chennai[i]);
+        // Validate the temperature of Chennai
+        if (chennai[i] < 28 || chennai[i] > 33) {
+            printf("Invalid temperature for Chennai.\n");
+            return 0;
+        }
+    }
+
+   
+    for (int i = 0; i < 7; i++) {
+        delhi[i] = chennai[i] - 8;
+    }
+
+   
+    for (int i = 0; i < 7; i++) {
+        haveri[i] = chennai[i] + 5;
+    }
+
+    
+    for (int i = 0; i < 7; i++) {
+        gangtok[i] = haveri[i] - delhi[i];
+    }
+
+    
+    printf("\nThe temperature of Gangtok for the week of 7 days:\n");
+    for (int i = 0; i < 7; i++) {
+        printf("Day %d: %.1f\n", i+1, gangtok[i]);
+    }
+
+    return 0;
+}
