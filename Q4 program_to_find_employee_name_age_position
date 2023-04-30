@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Employee {
+    char name[50];
+    int age;
+    char position[50];
+    char dateOfJoining[20];
+};
+
+int main() {
+    int n;
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+
+    struct Employee employees[n];
+
+    for (int i = 0; i < n; i++) {
+        printf("Enter the details of employee %d:\n", i+1);
+        printf("Name: ");
+        scanf(" %[^\n]s", employees[i].name);
+        printf("Age: ");
+        scanf("%d", &employees[i].age);
+        printf("Position: ");
+        scanf(" %[^\n]s", employees[i].position);
+        printf("Date of Joining: ");
+        scanf(" %[^\n]s", employees[i].dateOfJoining);
+    }
+
+  
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j < n; j++) {
+            if (strcmp(employees[i].name, employees[j].name) > 0) {
+                struct Employee temp = employees[i];
+                employees[i] = employees[j];
+                employees[j] = temp;
+            }
+        }
+    }
+
+    printf("\nEmployee list sorted in alphabetical order based on name:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Employee %d:\n", i+1);
+        printf("Name: %s\n", employees[i].name);
+        printf("Age: %d\n", employees[i].age);
+        printf("Position: %s\n", employees[i].position);
+        printf("Date of Joining: %s\n", employees[i].dateOfJoining);
+    }
+
+    
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j < n; j++) {
+            if (strcmp(employees[i].dateOfJoining, employees[j].dateOfJoining) > 0) {
+                printf("\nEmployee %s joined before Employee %s\n", employees[j].name, employees[i].name);
+            }
+        }
+    }
+
+    return 0;
+}
