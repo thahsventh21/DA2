@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int s = 0;
+
+ 
+    for (int i = 1000; i < 10000; i += 2) {
+        s += i;
+    }
+
+    while (s > 9) {
+        int dig = 0;
+        while (s > 0) {
+            dig += s % 10;
+            s /= 10;
+        }
+        s = dig;
+    }
+
+    
+    if (s % 2 == 0) {
+        printf("Even found\n");
+    } else {
+        printf("Odd found\n");
+    }
+
+    return 0;
+}
