@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+void divide(int arr[], int size, int level) {
+    if (size == 1) {
+        printf("Reached base condition at level %d\n", level);
+        return;
+    }
+    
+    int mid = size / 2;
+    int left[mid], right[size - mid];
+    
+    for (int i = 0; i < mid; i++) {
+        left[i] = arr[i];
+    }
+    
+    for (int i = mid; i < size; i++) {
+        right[i - mid] = arr[i];
+    }
+    
+    divide(left, mid, level + 1);
+    divide(right, size - mid, level + 1);
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    
+    divide(arr, size, 0);
+    
+    return 0;
+}
